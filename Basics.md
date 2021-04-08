@@ -416,7 +416,3 @@ Subplot()
 
 
 
-
---- Easter Eggs ---
-	lorenz
-	travel
