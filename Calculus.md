@@ -9,8 +9,8 @@
 	a0 = 1;  
 	k1 = 1;  
 	k2 = 1;
-	f = @(t,y) a0*k1*exp(-k1*t - k2*y.^2;
-
+	f = @(t,y) a0*k1*exp(-k1*t - k2*y.^2;	% Note "y.^2" vectorises the operation
+ 
 ### Evaluating Polynomials
 
 	p = [3 2 1];		% Create a vector holding the degree of each polynomial
