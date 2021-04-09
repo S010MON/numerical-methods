@@ -4,12 +4,22 @@
 	
 	f= @(x) x^2+1;
 	
-### Setting up diferential equations
+### Differential equations
 
+	% Setup variables
 	a0 = 1;  
 	k1 = 1;  
 	k2 = 1;
+	
+	% Setup equation
 	f = @(t,y) a0*k1*exp(-k1*t - k2*y.^2;	% Note "y.^2" vectorises the operation
+	
+	t0 = 0;
+	tf = 5;
+	y0 = 0;
+	
+	% Solve
+	[ts,ys] = ode45(f,[t0,tf],y0)
  
 ### Evaluating Polynomials
 
