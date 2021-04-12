@@ -1,4 +1,4 @@
-function [y]= runge_kutta_solver(f,t0,tn,y,h)
+function [y]= runge_kutta_midpoint(f,t0,tn,y,h)
 %RUNGE_KUTTA_SOLVER Midpoint Method 
 %   Utilises the Midpoint Method to generate an approximate solution to a
 %   differential equation using a Euler method form: 
