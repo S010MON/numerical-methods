@@ -9,12 +9,12 @@ function y = runge_kutta_trapezoid (f,t0,tn,y,h)
 
     w0 = y;
     while t0 < tn
-       % Calculate left endpoint
-       a = f(t,w0);
-       % Calcualte right endpoint
-       b = f((t+h), (w0+a));
-       % set the next state to the average of the two endpoints
-       w1 = w0 + h/2*(a+b);
+       
+       %a = f( t0, w0 );                             % Calculate left endpoint
+       %b = f(( t0 + h), (w0 + h) * a);       % Calcualte right endpoint
+       %w1 = w0 + (h/2) * (a+b);             % set the next state to the average of the two endpoints
+       
+       w1 = w0 + (h/2) * ( f(t0,w0) + f((t0+h), (w0+h) * f(t0, w0)));
        
        w0 = w1;
        t0 = t0+h;
