@@ -1,4 +1,4 @@
-function [y] = euler_solver(f,t0,tn,y,h)
+function [y] = solver_e(f,t0,tn,y,h)
 %EULER METHOD
 %   Give a differential equation f(t,y)generates an approximation
 %   of the solution by stepping from t0 to tn in increments of h
