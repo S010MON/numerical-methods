@@ -16,7 +16,7 @@ function [y]= solver_RK2_mid(f,t0,tn,y,h)
        
        w0 = w1;
        t0 = t0+h;
-    end
+    endwhile
     y = w1;
-end
+endfunction
 
