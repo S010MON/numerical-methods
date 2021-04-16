@@ -23,9 +23,12 @@ function y = ralston_solver (f,t0,tn,y,h)
 
     w0 = y;
     while t0 < tn
-       k1 = h * f(t0,w0);                                               
-       k2 = h * f((t0 + (2*h/3)) , (w0 + (2*k1/3)));       
-       w1 = w0 + (1/4 * k1) + (3/4 *k2);                           
+       k1 = h * f(t0,w0)
+       %fprintf("k1 = " k1);       
+       k2 = h * f((t0 + (2*h/3)) , (w0 + (2*k1/3)))
+       %fprintf("k2 = " k2);    
+       w1 = w0 + (1/4 * k1) + (3/4 *k2)
+       %fprintf("y = " w1);        
      
        w0 = w1;
        t0 = t0+h;
