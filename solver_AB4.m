@@ -1,5 +1,5 @@
-function [y]= 
-%   ADAMS_BASHFORTH_SOLVER 3 stage Method 
+function [y]= solver_AB4(f,t0,tn,y,h)
+%   ADAMS_BASHFORTH_SOLVER 4 stage Method 
 %   Approximates a solution to a DE 
 %   f = differential equation in a form: 
 %           y(t+h/2) = y(t) + h/2 * y'(t+h/2)
@@ -11,9 +11,9 @@ function [y]=
     t2 = t1 + h;
     t3 = t2 + h;
     w0 = y;
-    w1 = solver_Ralston(f,t0,t1,w0,h);                 % Bootstrap the first steps
-    w2 = solver_Ralston(f,t0,t1,w1,h);                
-    w3 = solver_Ralston(f,t0,t1,w1,h);     
+    w1 = solver_RK4(f,t0,t1,w0,h);                 % Bootstrap the first steps
+    w2 = solver_RK4(f,t0,t1,w1,h);                
+    w3 = solver_RK4(f,t0,t1,w1,h);     
     
     while t0 < tn    
        w4 = w3 + 1/24 * h * ( 55*f(t3,w3) - 59 * f(t2, w2) + 37 * f(t1,w1) - 9 * f(t0,w0));
@@ -27,5 +27,5 @@ function [y]=
        t1 = t1 + h; 
        t0 = t0 + h;            
     end
-    y = w1;
+    y = w4;
 end
