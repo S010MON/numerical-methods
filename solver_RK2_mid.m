@@ -1,8 +1,12 @@
-function [y]= runge_kutta_midpoint(f,t0,tn,y,h)
+function [y]= solver_RK2_mid(f,t0,tn,y,h)
 %RUNGE_KUTTA_SOLVER Midpoint Method 
 %   Utilises the Midpoint Method to generate an approximate solution to a
-%   differential equation using a Euler method form: 
+%   differential equation 
+%   f = differential equation in a form: 
 %           y(t+h/2) = y(t) + h/2 * y'(t+h/2)
+%   t0 -> tn =  the interval over which the evaluation occurs 
+%   h = the step size
+%   y = the initial state of the equation
 
     w0 = y;
     while t0 < tn
@@ -12,7 +16,7 @@ function [y]= runge_kutta_midpoint(f,t0,tn,y,h)
        
        w0 = w1;
        t0 = t0+h;
-    end
+    endwhile
     y = w1;
-end
+endfunction
 

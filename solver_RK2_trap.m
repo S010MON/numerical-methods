@@ -1,4 +1,4 @@
-function y = runge_kutta_trapezoid (f,t0,tn,y,h)
+function [y] = solver_RK2_trap(f,t0,tn,y,h)
 %   RUNGE_KUTTA_SOLVER trapezoid Method 
 %   Approximates a solution to a DE 
 %   f = differential equation in a form: 
