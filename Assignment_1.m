@@ -31,7 +31,7 @@ fprintf("\nFind y(t) = 0 using Secant method over interval:\n");
  e = 0.00001;
  t = secant_method(f,p,q,e)
 
- 
+
  % *****************************************************************************
 function y = solver_RK3(f,t0,tn,y,h)
 %   RUNGE_KUTTA_SOLVER 3rd order - Heun Method
@@ -105,7 +105,7 @@ function [i]= solver_AB3_Root(f,t0,tn,y,h)
 end
 % *****************************************************************************
 function [r] = secant_method(f,p,q,e)
-%SECANT_METHOD
+%   SECANT_METHOD
 %   Find the secant line between p and q
 %   Set the y value to zero on that line, assign to R
 %   Iterate through until q-p is smaller than the error e
