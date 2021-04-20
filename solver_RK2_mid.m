@@ -10,9 +10,9 @@ function [y]= solver_RK2_mid(f,t0,tn,y,h)
 
     w0 = y;
     while t0 < tn
-       a = t0+h/2;
-       b = w0+h/2*f(t0,w0);
-       w1 = w0 + (f(a,b)*h);
+       a = t0+h/2
+       b = w0+h/2*f(t0,w0)
+       w1 = w0 + (f(a,b)*h)
        
        w0 = w1;
        t0 = t0+h;
