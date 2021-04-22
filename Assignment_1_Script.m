@@ -1,10 +1,10 @@
-clear all;
+clear;
 clc;
 format long;
-% 6252320 Leon Debnath - Assignment 1
+fprintf("6252320 Leon Debnath - Assignment 1\n\n"); 
 % *****************************************************************************
 function y = solver_RK3(f,t0,y0,h)
-%   RUNGE_KUTTA_SOLVER 3rd order - Heun Method
+%   RUNGE_KUTTA_SOLVER 3rd order - Bootstrap Only
 %   Approximates a single step in the solution of a DE
 %   f = differential equation in a form:
 %           y(t+h/2) = y(t) + h/2 * y'(t+h/2)
@@ -16,7 +16,7 @@ function y = solver_RK3(f,t0,y0,h)
     k2 = h * f((t0 + (h/3)) , (y0 + (k1/3)));
     k3 = h * f((t0 + (2*h/3)) , (y0 + (2*k2/3)));
     y = y0 + 1/4 * ( k1 + (3*k3))
-endfunction
+end%function
 % *****************************************************************************
 function [y]= solver_AB3(f,t0,tn,y,h)
 %   ADAMS_BASHFORTH_SOLVER 3 stage Method
@@ -25,26 +25,30 @@ function [y]= solver_AB3(f,t0,tn,y,h)
 %   t0 -> tn =  the interval over which the evaluation occurs
 %   h = the step size
 %   y = the initial state of the equation
-
+    
+    w0 = y;
     t1 = t0 + h;
     t2 = t1 + h;
-    w0 = y;
+    
     w1 = solver_RK3(f,t0,w0,h)                 % Bootstrap the first two steps
-    w2 = solver_RK3(f,t0,w1,h)
+    w2 = solver_RK3(f,t0,w1,h)                  % Using 3rd Order Runge-Kutta
 
     while t0 < tn
-       wi = w1 + 1/12 * h * ( 23*f(t2,w2) - 16* f(t1, w1) + 5*f(t0,w0))
+       wi = w1 + 1/12 * h * ( 23*f(t2,w2) - 16* f(t1, w1) + 5*f(t0,w0));
+        
+        if t2 < 0.5
+          wi
+        end%if
         
        w2 = wi; w1 = w2; w0 = w1;                  % Move up all the weights
        t2 = t2+h; t1 = t1+h; t0 = t0+h;            % Increment all the times
-    endwhile
+    end%while
     y = wi;
-endfunction
+end%function
 % *****************************************************************************
 function [root]= solver_AB3_root(f,t0,tn,y,h)
 %   ADAMS_BASHFORTH_SOLVER 3 stage Method
-%   An ammended version that returns the time at the point where the
-%   value of wi crosses the x axis
+%   An ammended version that returns the values of the steps either side of zero
 %   Approximates a solution to a differential equation in a form:
 %   f = y(t+h/2) = y(t) + h/2 * y'(t+h/2)
 %   t0 -> tn =  the interval over which the evaluation occurs
@@ -60,18 +64,17 @@ function [root]= solver_AB3_root(f,t0,tn,y,h)
     root = 0;
 
     while t0 < tn
-       wi = w1 + 1/12 * h * ( 23*f(t2,w2) - 16* f(t1, w1) + 5*f(t0,w0))
+       wi = w1 + 1/12 * h * ( 23*f(t2,w2) - 16* f(t1, w1) + 5*f(t0,w0));
         
-        if (wi < 0 && w2 > 0)
-         root = [t2+h, wi;
-                          t2,w2];
-        endif
+        if (wi < 0 && w2 > 0)                      % If the last value and current value are on different sides of zero
+         root = [t2+h, wi;t2,w2];                  % Then note the times and values to be returned
+        end%if
         
        w2 = wi; w1 = w2; w0 = w1;                  % Move up all the weights
        t2 = t2+h; t1 = t1+h; t0 = t0+h;            % Increment all the times
-    endwhile
+    end%while
     y = wi;
-endfunction
+end%function
 % *****************************************************************************
 function [r] = secant_method(f,p,q,e,y0)
 %SECANT_METHOD
@@ -83,8 +86,8 @@ function [r] = secant_method(f,p,q,e,y0)
         r = q - ((q-p)/(f(q)-f(p)))*f(q);
         p = q;
         q = r;
-    endwhile
-endfunction
+    end%while
+end%function
 % *****************************************************************************
 f = @(t,y) sin(t) + y - (y^3);
 y = 2;
