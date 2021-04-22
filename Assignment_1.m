@@ -3,7 +3,7 @@ clc;
 format long;
 fprintf("6252320 Leon Debnath - Assignment 1\n\n");
 
-f = @(t,y) cos(t) + y - (y^3);
+f = @(t,y) sin(t) + y - (y^3);
 y = 2;
 t0 = 0;
 tn = 6;
@@ -17,7 +17,7 @@ error = abs((approx-exact))
 fprintf("\nAdams-Bashforth Method with step size: 0.05\n");
 h = 0.05;
 approx = solver_AB3(f,t0,tn,y,h)
-exact = -0.484509247
+exact = -0.6599693029
 error = abs((approx-exact))
 
 fprintf("\nFind t for y(t) = 0+/- h using Runge-Kutta method\n");
