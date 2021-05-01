@@ -1,0 +1,1 @@
+degree = 4;xValues = [0.0, 0.5, 1.0, 2.0, 3.0];yValues = [1.0, 0.8, 0.5, 0.2, 0.1];cs = polyfit(xValues, yValues, degree)polyval(cs, xValues)polyval(cs, 1.5)p = @(x) polyval(cs,xValues);fplot(p, [0.0,3.0]);
