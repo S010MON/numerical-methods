@@ -11,12 +11,12 @@ end%function
 
 
 % ************************************************************************ %
-function [as] = interpolate(X, Y, n)
-%INTERPOLATE a function f to degree d from values X and Y where:
-%	X = set of x values x0 - xn
-%	Y = set of y values y0 - yn
-%	n = the degree to evaluate to
-%	return as = the coeficients of the newton nested form
+function [as] = calculate_coeficients(X, Y, n)
+%CALCULATE COEFICIENTS from a divided difference table from values X and Y where:
+%	param: X = set of x values x0 - xn
+%	param: Y = set of y values y0 - yn
+%	param: n = the number of values to evaluate
+%	return: as = the coeficients of the newton nested form
 	
 
 	col = n+1;
@@ -46,6 +46,23 @@ function [as] = interpolate(X, Y, n)
 	end%for
 end%function
 
+% ************************************************************************ %
+function [y] = interpolate(A, X, x0, index)
+%INTERPOLATE the approximate value of f(x0) recursively
+%	param: A = set of coeficients
+%	param: X = set of X values
+%	param: index = the current index of the recursion
+% 	param: x0 = the value to be evaluated
+%	return: y = the approximate value of the function at x0
+
+	if index <= 1
+		y = A(index) + (X(index) - x0) 
+	else
+		index
+		y = interpolate(A, X, x0, index-1);
+		y = ((y * A(index)) + ( X(index) - x0)))
+	end%if
+end%function
 
 % ************************************************************************ %
 x = [2.5, 2.0, 3.0, 1.5, 3.5, 1.0, 4.0, 0.5, 4.5, 0.0, 5.0];
@@ -53,8 +70,9 @@ yAct = [0.68, 0.66, 0.90, 0.79, 1.31, 1.02, 1.77, 1.30, 1.87, 1.50, 1.33];
 yApx = [0.70, 0.74, 0.94, 0.79, 1.34, 1.05, 1.78, 1.33, 1.87, 1.49,1];
 n = 11;
 
-interpolate(x,yAct,n)
+as = calculate_coeficients(x,yAct,n)
 
+y0 = interpolate(as, x, 2.5, 12)
 cs = polyfit(x, yAct, n);
 polyval(cs,x);
  
