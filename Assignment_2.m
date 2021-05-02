@@ -44,25 +44,6 @@ function [y] = recursiveNestedForm(A, X, x0, index)
 end%function
 
 % ************************************************************************ %
-function [y] = recursiveNestedForm(A, X, x0, index)
-%INTERPOLATE the approximate value of f(x0) recursively
-%	param: A = set of coeficients
-%	param: X = set of X values
-%	param: index = the current index of the recursion
-% param: x0 = the value to be evaluated
-%	return: y = the approximate value of the function at x0
-
-	if index == 1
-    y = A(1);
-	else
-    nf = nestedForm(A, X, x0, (index-1));
-    xk = X(index-1);
-    ak = A(index);
-    y = nf + ((x0 - xk) * ak);
-	end%if
-end%function
-
-% ************************************************************************ %
 function [y] = standardNestedForm(A, X, x0)
 %INTERPOLATE the approximate value of f(x0) 
 %	param: A = set of coeficients
