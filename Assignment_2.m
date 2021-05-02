@@ -12,10 +12,10 @@ function [A] = divided_difference_table(X, Y)
       
   for col = 2:length(A)
       for row = 1: length(Y)-n
-        x0 = X(row) 			
-        x1 = X(row+n)
-        fx0 = A(row,col-1) 
-        fx1 = A(row+1,col-1)
+        x0 = X(row);	
+        x1 = X(row+n);
+        fx0 = A(row,col-1); 
+        fx1 = A(row+1,col-1);
         A(row,col) = (fx1 - fx0)/(x1 - x0);
       end%for
     n = n+1;
@@ -70,11 +70,11 @@ yValuesAct = [0.68, 0.66, 0.90, 0.79, 1.31, 1.02, 1.77, 1.30, 1.87, 1.50, 1.33];
 yValuesApx = [0.70, 0.74, 0.94, 0.79, 1.34, 1.05, 1.78, 1.33, 1.87, 1.49,1];
 degree = 10; 
 
-aAct = divided_difference_table(xValues, yValuesAct);  
+aAct = divided_difference_table(xValues, yValuesAct)  
 fAct = @(x) standardNestedForm(aAct, xValues, x);
 pAct = @(x) polyval(polyfit(xValues, yValuesAct, degree),x);
 
-aApx = divided_difference_table(xValues, yValuesApx);
+aApx = divided_difference_table(xValues, yValuesApx)
 fApx = @(x) standardNestedForm(aApx, xValues, x);
 pApx = @(x) polyval(polyfit(xValues, yValuesApx, degree),x);
 
@@ -82,6 +82,7 @@ fplot(pAct, [-0.1, 5.1]);
 hold on; 
 fplot(pApx, [-0.1, 5.1]);
 fplot(fAct, [-0.1, 5.1]); 
+%fplot(fApx, [-0.1, 5.1]);  % <- this takes forever and I can't work out why ...
 hold off;
 
 y = standardNestedForm(aAct, xValues, 2.5);
