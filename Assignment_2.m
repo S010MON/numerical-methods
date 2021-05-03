@@ -25,30 +25,31 @@ function [A] = divided_difference_table(X, Y)
 end%function
 
 % ************************************************************************ %
-function [y] = recursiveNestedForm(A, X, x0, index)
-%INTERPOLATE the approximate value of f(x0) recursively
+function [y] = derivative(A, X, x0)
+%INTERPOLATE the approximate value of f'(x0)
 %	param: A = set of coeficients
 %	param: X = set of X values
-%	param: index = the current index of the recursion
-% param: x0 = the value to be evaluated
-%	return: y = the approximate value of the function at x0
+% 	param: x0 = the value to be evaluated
+%	return: y = the approximate value of the f'(x0)
 
-	if index == 1
-    y = A(1);
-	else
-    nf = nestedForm(A, X, x0, (index-1));
-    xk = X(index-1);
-    ak = A(index);
-    y = nf + ((x0 - xk) * ak);
-	end%if
+    total = A(2);
+    for i = 2: (length(A) -1)
+        t = 1;
+        for j = 2 : i
+            t = t * (x0 - X(j));
+        end%for
+        t = t * A(i +1);
+        total = rnd(total + t, 3);
+    end%for
+    y = rnd(total, 3);
 end%function
 
 % ************************************************************************ %
-function [y] = standardNestedForm(A, X, x0)
+function [y] = nestedForm(A, X, x0)
 %INTERPOLATE the approximate value of f(x0) 
 %	param: A = set of coeficients
 %	param: X = set of X values
-% param: x0 = the value to be evaluated
+% 	param: x0 = the value to be evaluated
 %	return: y = the approximate value of the function at x0
   
     total = A(1);
@@ -73,7 +74,7 @@ degree = 10;
 fprintf("\n\n\n*******************************************************************");
 fprintf("\nDivided Difference Table for y\n");
 aAct = divided_difference_table(xValues, yValuesAct)  
-fAct = @(x) standardNestedForm(aAct, xValues, x);
+fAct = @(x) nestedForm(aAct, xValues, x);
 pAct = @(x) polyval(polyfit(xValues, yValuesAct, degree),x);
 
 fprintf("\n\n\n Check values against yi\n");
@@ -88,7 +89,7 @@ fprintf("\n From this check we can see that  the calculated values are the same 
 fprintf("\n\n\n*******************************************************************");
 fprintf("\nDivided Difference Table for ~y\n");
 aApx = divided_difference_table(xValues, yValuesApx)
-fApx = @(x) standardNestedForm(aApx, xValues, x);
+fApx = @(x) nestedForm(aApx, xValues, x);
 pApx = @(x) polyval(polyfit(xValues, yValuesApx, degree),x);
 
 fprintf("\n\n Check values against ~yi\n");
@@ -107,3 +108,5 @@ fplot(fAct, [-0.1, 5.1]);
 %fplot(fApx, [-0.1, 5.1]);  % <- this takes forever and I can't work out why ...
 hold off;
 
+fprintf("\n\nDerivative at point x = 2.5\n");
+dydx = derivative(aAct, xValues, 2.5)
