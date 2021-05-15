@@ -5,6 +5,17 @@ For-Loops
 		%code block;
 	end					% It is good practice to comment end of for loop
 
+   *example:*
+   
+   	for i = 1:n
+		% do stuff ...
+	endfor
+	
+   *With steps other than one:*
+   
+   	for i: 1:3:n 		% will count in threes
+		% do stuff ...
+	endfor
 
 Breaks
 
