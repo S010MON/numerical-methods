@@ -11,7 +11,7 @@ For-Loops
 		% do stuff ...
 	endfor
 	
-   *With steps other than one:*
+   *with steps other than one:*
    
    	for i: 1:3:n 		% will count in threes
 		% do stuff ...
