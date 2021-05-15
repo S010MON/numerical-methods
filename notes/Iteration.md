@@ -1,21 +1,21 @@
 
 For-Loops
 
-	for looping variable = looping array	% it is good practice to comment start of for loop with the iterator
+	for looping variable = looping array	
 		%code block;
-	end					% It is good practice to comment end of for loop
+	end%for					
 
    *example:*
    
    	for i = 1:n
 		% do stuff ...
-	endfor
+	end%for
 	
    *with steps other than one:*
    
    	for i: 1:3:n 		% will count in threes
 		% do stuff ...
-	endfor
+	end%for
 
 Breaks
 
@@ -23,14 +23,14 @@ Breaks
 
 		if i == 7;
 			break		% Stop the loop at 7 
-		end
+		end%for
 
-	end				%end of for i
+	end%for				%end of for i
 
 While-Loops
 
 	while logical expression
 		%code block
-	end	
+	end%while	
 
 
