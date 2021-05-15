@@ -48,6 +48,35 @@ function coef = fourier_coeficients (f, a, b, n)
  end%function
  
 #************************************************#
+function y = fourier_function (x, c, n)
+% Creates an approximate fourier function from
+% c - the array of coeficients in the form a0, a1, b1, a2, b2, ... an, bn    
+% n - the degree of the fourier series where:  n <= length c/2 -1    
+    
+    y = c(1);
+    degree = 1;
+    for i = 2: 2: n.*2
+      y = y + (c(i).*cos((degree).*x)) + (c(i+1).*sin((degree).*x));
+      degree = degree + 1;
+    end%for
+end%function
+
+#************************************************#
+function e = error (f, a, b, n)
+% Calculates the error between f(x) and the approximation of f(x) by degree n
+% f  - the function being approximated
+% x - the value for which to approximate
+% n - the degree of the fourier series
+    
+    c = fourier_coeficients (f, a, b, n);  
+    sigma = 0;
+    for i = 2:length(c)
+      sigma = sigma + c(i).^2;
+    endfor
+    e = pi.*sigma;
+    
+end%function
+#************************************************#
 
 fprintf("\n**********************************************\n");
 fprintf("\nAssignment 3 - 6252320 - Leon Debnath\n");
@@ -63,5 +92,29 @@ composite_simpson = simpson_composite(f,a,b)
 fprintf("\n**********************************************\n");
 fprintf("\nPart 2:  Approximate g(x) by a Fourier sum to degree 6\n\n");
 g = @(x) (cos (2 .* x) ./ (3 + 2 .* sin (x)))
-fprintf("\nIn this array, a0 is the first term, with ai and bi alternating subsequently\n\n");
 c = fourier_coeficients(g,-pi,pi,6)
+fprintf("\nIn this array, a0 is the first term, with ai and bi alternating subsequently\n\n");
+
+
+fprintf("\n**********************************************\n");
+fprintf("\nPart 3: Plot f(x) for degree 1, 2, and 3\n\n");
+
+f1 = @(x) fourier_function(x, c, 1);
+f2 = @(x) fourier_function(x, c, 2);
+f3 = @(x) fourier_function(x, c, 3);
+
+fplot(g,[-pi,pi], 'b')
+hold on;
+fplot(f1,[-pi,pi], 'r')
+fplot(f2,[-pi,pi], 'r')
+fplot(f3,[-pi,pi], 'r')
+hold off;
+
+fprintf("\n**********************************************\n");
+fprintf("\nPart 4: Calculate the approximation error for degree 1 - 6\n\n");
+for i = 1:6
+  error(g,-pi,pi,i)
+end%for
+  
+  
+  
