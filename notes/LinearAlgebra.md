@@ -1,25 +1,60 @@
 
+### Creating Vectors
 
+	v = [1, 2, 3];  	% Creates a vector row
+
+	v = [1; 2; 3];		% Creates a vector column
+
+	v = [1, 2, 3];
+	v = v';			% Shortcut column from row
+
+### Creating Matrices
+
+        M = [1, 2, 3; 4, 5, 6];
+
+        -OR-
+
+        M = [[1, 2, 3];[4, 5, 6]];
+
+        -OR-
+
+        M = [X1; X2];
+
+        -OR-
+
+        M = [[1; 4],[2; 5],[3; 6]];
+
+### Indexing
+
+        To access row r in column c of array A:   A(r,c)
+
+        To access a range use the ':' operator:   A(r, c1:c4)   -OR-    A(r1:r2, c)
+
+        To access from a mid point to the end:    A(r, c:end)
+
+### Dimentions
+
+	size(A) = [m, n];				% The size() function returns the dimentions m and n as a vector
 
 ### Colon Iterator
 
-	1:10      = [1 2 3 4 5 6 7 8 9 10]		// Create an array from 1 to 10
+	1:10      = [1 2 3 4 5 6 7 8 9 10]		% Create an array from 1 to 10
 	
-	startValue : increment : final value		// Creates an array of values at set increments
+	startValue : increment : final value		% Creates an array of values at set increments
 
 	1 : 2 : 10	= [2, 4, 6, 8, 10]
 
 
 ### Linspace
 
-	linspace(from, to, spacing)			// Creates an array of equally spaced values
+	linspace(from, to, spacing)			% Creates an array of equally spaced values
 
 	linspace(1, 600, 7)	= 1	10	20	30	40	50	60
 
 
 ### Zeros
 
-	zeros(m,n)					// Creates a matrix of zeros M x N
+	zeros(m,n)					% Creates a matrix of zeros M x N
 
 	zeros(3,5)      =      0 0 0 0 0
                                0 0 0 0 0
@@ -27,13 +62,11 @@
 
 ### Zeros
 
-        ones(m,n)                                       // Creates a matrix of ones M x N
+        ones(m,n)                                       % Creates a matrix of ones M x N
 
         ones(3,5)      =       1 1 1 1 1
                                1 1 1 1 1
                                1 1 1 1 1
-
-
 
 
 ### Matrix Element-by-Element (EbE) Operations
@@ -81,10 +114,10 @@
 ### Identity Matrix
 
 	eye(n)		
-          1 0 0 0		%where n is the columns and rows
-			    0 1 0 0
-			    0 0 1 0
-			    0 0 0 1
+	        1 0 0 0		%where n is the columns and rows
+		0 1 0 0
+		0 0 1 0
+		0 0 0 1
       
 ### Determinant
 

@@ -65,28 +65,9 @@
 	x2 = [4, 5, 6];
 
 #### Matrices
-	M = [1, 2, 3; 4, 5, 6];
 
-	-OR-
-
-	M = [[1, 2, 3];[4, 5, 6]];
+	see Linear_Algebra.md
 	
-	-OR-
-
-	M = [X1; X2];
-
-	-OR-
-
-	M = [[1; 4],[2; 5],[3; 6]];
-
-#### Indexing
-
-	To access row r in column c of array A:   A(r,c)
-
-	To access a range use the ':' operator:   A(r, c1:c4)	-OR-	A(r1:r2, c)
-
-	To access from a mid point to the end:	  A(r, c:end)
-
 ### Struct Arrays
 
 Like a class in Java can hold multiple data types within a data structure:
