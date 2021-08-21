@@ -127,6 +127,7 @@
 ### Inverse Matrix
 
 	inv(M)		% resolves to Inf if there is no inverse
+	pinv(M)		% resolves to an inverted matrix regardless of whether the matrix is invertable or not
 
 ### Augmented Matrix
 
