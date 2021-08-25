@@ -60,14 +60,22 @@
                                0 0 0 0 0
                                0 0 0 0 0
 
-### Zeros
+### Ones
 
         ones(m,n)                                       % Creates a matrix of ones M x N
 
-        ones(3,5)      =       1 1 1 1 1
+        ones(3,5)      	=      1 1 1 1 1
                                1 1 1 1 1
                                1 1 1 1 1
 
+### Random
+
+	rand(m,n)					% Creates a random M x N matrix
+
+	rand(3,3)       =     0.8301   0.4566   0.5093
+			      0.4763   0.5836   0.8557                                                                     0.5847   0.8590   0.5216
+
+	randn(m,n) 					% Creates a gaussian random matrix
 
 ### Matrix Element-by-Element (EbE) Operations
 
