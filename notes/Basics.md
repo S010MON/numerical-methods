@@ -1,4 +1,4 @@
-### Operators
+### Operators:
 	
 #### Basic Maths
 	+	add			
@@ -15,9 +15,9 @@
 	∼=	not equal	
 
 ####  Boolean
-	&&	AND			
-	||	OR (not XOR)		
-	∼	NOT
+	&&	AND	   	% all boolean variables are output as		
+	||	OR (not XOR)	% 1 = true
+	∼	NOT	  	% 0 = false
 
 ####  Adv Maths
 	
