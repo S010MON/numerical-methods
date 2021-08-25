@@ -55,3 +55,14 @@
 	Z = f(X).*f(y);		% create Z values
 	
 	surf(X,Y,Z)		% surface the plot
+
+### Histograms
+
+	hist(m) 	# Where m is a matrix: prints out a Histogram graph
+
+			|               __
+			|	     __|  |
+			|         __|  |  |__
+			|      __|  |  |  |  |__
+			|   __|  |  |  |  |  |  |__
+			|__|__|__|__|__|__|__|__|__|__
