@@ -66,3 +66,5 @@
 			|      __|  |  |  |  |__
 			|   __|  |  |  |  |  |  |__
 			|__|__|__|__|__|__|__|__|__|__
+
+	hist(m, columns)  % will set the number of columns
