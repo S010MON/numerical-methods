@@ -61,3 +61,15 @@ For a dataset where M is a 5X5 array:
 		1  7
 		1  7
 		1  7
+
+	B = [A, [3; 3; 3; 3; 3;]]	% Appends the vector of 3's to the end of A
+
+		1  7  3
+		1  7  3
+		1  7  3
+		1  7  3 
+		1  7  3
+
+	m = M(:)			% Puts all of matrix M into a single vector
+
+	m = [1,1,1,1,1,2,2,2,2,2,3,3,3,3,3,4,4,4,4,4,5,5,5,5,5]' 
