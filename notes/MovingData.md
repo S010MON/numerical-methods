@@ -72,4 +72,17 @@ For a dataset where M is a 5X5 array:
 
 	m = M(:)			% Puts all of matrix M into a single vector
 
-	m = [1,1,1,1,1,2,2,2,2,2,3,3,3,3,3,4,4,4,4,4,5,5,5,5,5]' 
+	m = [1,1,1,1,1,2,2,2,2,2,3,3,3,3,3,4,4,4,4,4,5,5,5,5,5]'
+
+This can also be used to concatonate matrices:
+
+	A = [1,2; 3,4; 5,6]
+	B = [7,8; 9,10; 11,12]
+
+	C = [A, B]
+
+	C = 
+		1   2   7   8 
+		3   4   9  10
+		5   6  11  12
+	 
