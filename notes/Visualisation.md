@@ -30,14 +30,24 @@
 
 ### Plot Management
 
-	figure		open a new figue
+	figure(n)		% open a new figue labled "Figure n"
 
-	close all	close all figures
+	close			% close current figure
 
-	clf		clear a figure without closing
+	close all		% close all figures
+
+	clf			% clear a figure without closing
+
+### Saving Plots
+
+	cd ~/directory/where/you/want/to/save
+
+	print -dpng 'Name.png'
 
 ### Subplot()
 
+	subplot(h, w, box)	% Divide into h x w no. of boxes and select a box 
+	subplot(1, 2, 1)	% Divides plot into 1 x 2 grid and accesses the first box
 	scatter
 	bar
 	loglog
@@ -58,7 +68,7 @@
 
 ### Histograms
 
-	hist(m) 	# Where m is a matrix: prints out a Histogram graph
+	hist(M) 		% Where m is a matrix: prints out a Histogram graph
 
 			|               __
 			|	     __|  |
@@ -67,4 +77,12 @@
 			|   __|  |  |  |  |  |  |__
 			|__|__|__|__|__|__|__|__|__|__
 
-	hist(m, columns)  % will set the number of columns
+	hist(M, columns)  	% will set the number of columns
+
+### Visualising Matrices
+
+	imagesc(M)		% plots the matrix M in coloured boxes for visualisation
+
+	colorbar		% adds a colour bar to the visualisation
+
+	colormap grey		%  sets the colouring
