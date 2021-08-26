@@ -8,6 +8,20 @@
 	v = [1, 2, 3];
 	v = v';			% Shortcut column from row
 
+### Operating on Vectors
+
+Where v is the vector [1,2,3]:
+
+	v' = [1; 2; 3]		% Gives the transpose of v
+
+	max(v) = 3		% Selects the highest number in the vector
+
+	[max, ind] = max(v)	% Selects the highest vector and sets ind to the index
+		
+		max = 3
+		ind = 3				
+
+
 ### Creating Matrices
 
         M = [1, 2, 3; 4, 5, 6];
