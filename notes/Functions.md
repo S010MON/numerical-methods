@@ -1,5 +1,16 @@
 ## Functions
 
+### Calling Functions
+
+	% Functions are called simply using the name and adding arguments
+
+	sqrt(x)
+
+	% If the function is not found, it may be in the wrong search path
+	% You can cd to the correct directory, or add the path using:
+
+	addpath('~/your/dir/here')
+
 ### Creating Functions
 
 	Open editor using "new+" button in upper left hand corner and select "new function"
