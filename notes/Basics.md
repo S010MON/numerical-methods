@@ -19,7 +19,7 @@
 	||	OR (not XOR)	% 1 = true
 	∼	NOT	  	% 0 = false
 
-####  Adv Maths
+####  Functions
 	
 	i				
 	factorial()			
@@ -49,24 +49,12 @@
 	
 	% This does not change the number
 
-
-### Variables, Arrays & Matrices
-
 #### Variables
 	x = 1;			Double (as standard)
 
 	c = 'char'		Chars (incl Strings)
 
 	class(x);		get what type of variable 
-
-	
-#### Array
-	X1 = [1, 2, 3];
-	x2 = [4, 5, 6];
-
-#### Matrices
-
-	see Linear_Algebra.md
 	
 ### Struct Arrays
 
