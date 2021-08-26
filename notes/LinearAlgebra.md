@@ -21,7 +21,6 @@ Where v is the vector [1,2,3]:
 		max = 3
 		ind = 3				
 
-
 ### Creating Matrices
 
         M = [1, 2, 3; 4, 5, 6];
@@ -46,9 +45,9 @@ Where v is the vector [1,2,3]:
 
         To access from a mid point to the end:    A(r, c:end)
 
-### Dimentions
+### Dimensions
 
-	size(A) = [m, n];				% The size() function returns the dimentions m and n as a vector
+	size(A) = [m, n];				% The size() function returns the dimensions m and n as a vector
 
 ### Colon Iterator
 
@@ -153,7 +152,7 @@ Where v is the vector [1,2,3]:
 
 ### Augmented Matrix
 
-	[A,y]
+	[A,y]		% Contatonate vector y to matrix A
 
 ### Rank
 	
@@ -164,3 +163,20 @@ Where v is the vector [1,2,3]:
 ### Backslash divide
 
 	A\y	To solve augmented matrix [A,y]
+
+### Functions
+
+	magic(n)			% Creates a n x n matrix where all rows and columns add to the same thing
+	
+	find([boolean_expresson])	% Produces two vectors [r,c] that list the row and column of any element that validates to true
+
+	sum(a)				% Sums all the elements of the vector a
+	sum(a, d) 			% sums along dimension d (default is 1)
+
+	prod(a)				% Computes the product of the vector a's elements
+
+	floor(a)			% rounds down all elements of a to the nearest integer (i.e.  1.4 -> 1)
+
+	ceil(a)				% rounds up all elements to the nearest integer
+
+	max(M, [], 1)			% takes the column wise maximum of the matrix M (where 1 indicates the dimension)
