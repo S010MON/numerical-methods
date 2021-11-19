@@ -2,7 +2,7 @@
 % 
 %  Assignment 2 | Prof. Alberto Paccanaro
 % 
-function e_hat = myevalueA(err)
+function output = myevalueA(err)
 
 	% Set the value for 'n' in our formula to 1
 	n = 1;
@@ -28,4 +28,6 @@ function e_hat = myevalueA(err)
 		% increment the counter
 		n = n+1;
 	end %while
+
+	output = [e_hat, n];
 end %function

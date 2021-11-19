@@ -2,7 +2,7 @@
 % 
 %  Assignment 2 | Prof. Alberto Paccanaro
 % 
-function e_hat = myevalueB(err)
+function output = myevalueB(err)
 
 	% Set the value for 'n' in our formula to 1
 	n = 0;
@@ -17,13 +17,15 @@ function e_hat = myevalueB(err)
 	while epsilon > err
 
 			% Use the given formula to find the inverse
-		e_hat = e_hat + (1/factorial(n))
+		e_hat = e_hat + (1/factorial(n));
 
 		% recaluculate the new error (for the while loop to test)
-		epsilon = abs(exp(1) - e_hat)
+		epsilon = abs(exp(1) - e_hat);
 	
 		% increment the counter
 		n = n+1;
 
 	end %while
+
+	output = [e_hat, n];
 end %function
