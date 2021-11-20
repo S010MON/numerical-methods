@@ -28,4 +28,7 @@ function [data] = outpatientreport()
     % Plot weight against smoking 
     figure
     boxplot(data.Weight, data.isSmoker);
+    title('Smoking and Non smoking effect on weight');
+    ylabel('Weight (kg)');
+    xlabel('Is smoker?');
 end %function
