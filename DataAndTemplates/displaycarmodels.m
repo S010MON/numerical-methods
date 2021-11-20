@@ -24,7 +24,7 @@ function [output] = displaycarmodels()
             avail_models{end+1} = model(i,1:36);
         end %if
     end%for
-    
+   
     % Prompt the user for the model type
     [indx, tf] = listdlg('PromptString', {'Select model'},'SelectionMode','Single','ListString',avail_models);
     
