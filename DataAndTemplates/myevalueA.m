@@ -29,5 +29,5 @@ function output = myevalueA(err)
 		n = n+1;
 	end %while
 
-	output = [e_hat, n];
+	output = [e_hat, n, epsilon];
 end %function
