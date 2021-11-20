@@ -4,11 +4,13 @@
 %
 function output = ecompare(X)
 	
+	% Create an array to hold each set of values
 	Y_error_a = zeros(size(X));
        	Y_iter_a  = zeros(size(X));
        	Y_error_b = zeros(size(X));
 	Y_iter_b  = zeros(size(X));
 
+	% for every element in the input vector x, plot the values
 	for i = 1:length(X)
 		Y_a = myevalueA(X(i));
 		Y_error_a(i) = Y_a(3);
@@ -19,6 +21,7 @@ function output = ecompare(X)
 		Y_iter_b(i) = Y_b(2);
 	end %for
 
+	% Create a plot
 	hold on;
 	scatter(Y_iter_a, Y_error_a, 'filled');
 	scatter(Y_iter_b, Y_error_b, 'filled');
@@ -30,7 +33,7 @@ function output = ecompare(X)
 	title('Comparison of approximation methods of e','FontSize',14);
 	hold off;
 
+	% Return the values in case the user wants them
 	output = [Y_error_a; Y_iter_a; Y_error_b; Y_iter_b];
-	
 
 end %function
