@@ -23,27 +23,7 @@ hold on
 scatter(centroids(:,1), centroids(:,2), "r");  
 hold off
 
-
-%% Iterate through the data and, for each element, assign the label to the closest centroid
-%for i = 1:length(data)
-%	min_dist = 1000000;
-%	min_label = 0;
-%	x_1 = data(i,1);
-%	y_1 = data(i,2);
-%
-%	for j = 1:length(centroids)
-%		y_2 = centroids(j,2);
-%		x_2 = centroids(j,1);
-%		d = dist(x_1, y_1, x_2, y_2);
-%		if d < min_dist
-%			min_dist = d;
-%		 	min_label = j;		
-%		end%if
-%	end%for
-%	
-%	data(i,3) = min_label;
-%end%for
-
+%% Add the labels to the data
 R = updateLabels(centroids, data);
 centroids = R{1};
 data = R{2};
