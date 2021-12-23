@@ -1,21 +1,23 @@
-function [centroids, data] = updateLabels(centroids, data)
+function centroids = updateMeans(centroids, data)
+%% Set each centroid to the mean x and y position of the data points 
+%% that are closest to it
+	
+	for i = 1:length(centroids)
+		sum_x = 0;
+		sum_y = 0;
+		count = 0;
+		for j = 1:length(data)
 
-	for i = 1:length(data)
-		min_dist = 1000000;
-		min_label = 0;
-		x_1 = data(i,1);
-		y_1 = data(i,2);
-
-		for j = 1:length(centroids)
-			x_2 = centroids(j,1);
-			y_2 = centroids(j,2);
-			d = dist(x_1, y_1, x_2, y_2);
-			if d < min_dist
-				min_dist = d;
-				min_label = j;
+			% if the data is labelled i
+			if data(j,3) == i
+				sum_x += data(j,1);
+				sum_y += data(j,2);
+				count += 1;
 			end%if
 		end%for
 
-		data(i,3) = min_label;
+		% find the mean average of x and y position
+		centroids(i,1) = sum_x / count;
+		centroids(i,2) = sum_y / count;
 	end%for
 end%function
