@@ -1,23 +1,19 @@
-function result = updateLabels(centroids, data)
+function labels = updateLabels(centroids, data, labels)
 
 	for i = 1:length(data)
 		min_dist = 1000000;
 		min_label = 0;
-		x_1 = data(i,1);
-		y_1 = data(i,2);
+		A = data(i,:);
 
 		for j = 1:length(centroids)
-			x_2 = centroids(j,1);
-			y_2 = centroids(j,2);
-			d = dist(x_1, y_1, x_2, y_2);
+			B = centroids(j,:);
+			d = dist(A, B);
 			if d < min_dist
 				min_dist = d;
 				min_label = j;
 			end%if
 		end%for
 
-		data(i,3) = min_label;
+		labels(i) = min_label;
 	end%for
-
-	result = {centroids, data};
 end%function

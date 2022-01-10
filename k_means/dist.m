@@ -1,5 +1,12 @@
-function d = dist(x_1, y_1, x_2, y_2)
+function d = dist(A, B)
+%% Take in two points A and B where A and B are arrays and each element i
+%% in the arrays indicates the i^th dimension 
+	 
+	sigma = 0;
+	for i = 1:length(A)
+		sigma = sigma + (A(i) - B(i))^2;
+	end
 
-	d = sqrt((x_2 - x_1)^2 + (y_2 - y_1)^2);
+	d = sqrt(sigma);
 	
 endfunction

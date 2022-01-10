@@ -8,34 +8,34 @@ c3 = rand([100,2]) .+ [1.3,0];
 data = [c1; c2; c3];
 
 %% Add labels to the data as a third column
-data = [data, zeros([length(data),1])];
+labels = zeros([length(data),1]);
+
 
 %% generate k random centroids within the max sizes of the data
 max_x = max(data(:,1));
 max_y = max(data(:,2));
 
 k = 3;
-centroids = rand([k,2]) .* [max_x/2, max_y];
+shape = size(data);
+centroids = rand([k,shape(2)]) .* [max_x/2, max_y];
 
 %% Label the data
-R = updateLabels(centroids, data);
-data = R{2};
+labels = updateLabels(centroids, data, labels);
 
 %% Plot the data and the centroids
 figure(1)
-plotKmeans(centroids, data);
+plotKmeans(centroids, data, labels);
 
 %% Run n iterations of the algorithm
-for i = 1:100
+for i = 1:2
 	
 	% re-label the data
-	R = updateLabels(centroids, data);
-	data = R{2};
+	labels = updateLabels(centroids, data, labels);
 	% update the centroid location to the mean of the current data 
-	centroids = updateMeans(centroids, data);
+	centroids = updateMeans(centroids, data, labels);
 	
 end %for
 
 %% Plot the end result
 figure(2)
-plotKmeans(centroids, data);
+plotKmeans(centroids, data, labels);
