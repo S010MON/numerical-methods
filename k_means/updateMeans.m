@@ -15,6 +15,6 @@ function centroids = updateMeans(centroids, data, labels)
 		end%for
 
 		% Reassign centroid to the mean average of positions
-		centroids(i,:) = sigma(i,:) ./ count
+		centroids(i,:) = sigma(i,:) ./ count;
 	end%for
 end%function

@@ -1,23 +1,16 @@
 
 %% generate three random clusters
-c1 = rand([100,2]);
-c2 = rand([100,2]) .+ [0.6,3];
-c3 = rand([100,2]) .+ [1.3,0];
-
-%% Concatonate the three clusters into one dataset
-data = [c1; c2; c3];
+clusters = 3;
+data_points = 1000; % n.b.  we select out so there will be fewer than this number
+dims = 3;
+data = generateData(dims, clusters, data_points);
 
 %% Add labels to the data as a third column
 labels = zeros([length(data),1]);
 
-
 %% generate k random centroids within the max sizes of the data
-max_x = max(data(:,1));
-max_y = max(data(:,2));
-
 k = 3;
-shape = size(data);
-centroids = rand([k,shape(2)]) .* [max_x/2, max_y];
+centroids = rand([k,dims]) .* 12;
 
 %% Label the data
 labels = updateLabels(centroids, data, labels);
@@ -27,7 +20,7 @@ figure(1)
 plotKmeans(centroids, data, labels);
 
 %% Run n iterations of the algorithm
-for i = 1:2
+for i = 1:100
 	
 	% re-label the data
 	labels = updateLabels(centroids, data, labels);
