@@ -2,15 +2,17 @@
 %% generate three random clusters
 clusters = 3;
 data_points = 1000; % n.b.  we select out so there will be fewer than this number
-dims = 3;
 data = generateData(dims, clusters, data_points);
+S = size(data);
+dims = S(2);
 
 %% Add labels to the data as a third column
 labels = zeros([length(data),1]);
 
 %% generate k random centroids within the max sizes of the data
 k = 3;
-centroids = rand([k,dims]) .* 12;
+m = max(max(data));
+centroids = rand([k,dims]) .* m;
 
 %% Label the data
 labels = updateLabels(centroids, data, labels);
