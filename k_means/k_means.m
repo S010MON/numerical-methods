@@ -2,7 +2,10 @@
 %% generate three random clusters
 clusters = 3;
 data_points = 1000; % n.b.  we select out so there will be fewer than this number
+dims = 3;
 data = generateData(dims, clusters, data_points);
+
+%% if you want to add your own data, set data = your_data_here
 S = size(data);
 dims = S(2);
 
